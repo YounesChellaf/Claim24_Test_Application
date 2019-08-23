@@ -27,18 +27,19 @@ class Auth extends CI_Controller {
                     $password = md5($_POST['password']);
                     $querry = $this->db->select('*')->from('users')->where(array('email' => $email, 'password' => $password))->get();
                     $user = $querry->row();
-                    if ($user->email) {
+                    if ($user) {
                         $this->session->set_flashdata("success", "You are logged in");
                         $_SESSION['logged_user'] = true;
-                        $_SESSION['username'] = $user->user_name;
-                        redirect("/", "refresh");
+                        $_SESSION['first_name'] = $user->first_name;
+                        $_SESSION['last_name'] = $user->last_name;
+                        redirect(base_url(), "refresh");
                     } else {
                         $this->session->set_flashdata("error", "No such an account with that email and password");
-
                     }
                 }
             }
-            $this->load->view('login');
+            $data['menu'] = $this->load->view('login', NULL, TRUE);
+            $this->load->view('index',$data);
         }
     }
 
@@ -52,7 +53,6 @@ class Auth extends CI_Controller {
             if (isset($_POST['register'])) {
                 $this->form_validation->set_rules('first_name', 'First Name ', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name ', 'required');
-                $this->form_validation->set_rules('user_name', 'User Name', 'required');
                 $this->form_validation->set_rules('email', 'Email', 'required');
                 $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
                 $this->form_validation->set_rules('confirm_password', 'Confirmed Password', 'required|min_length[6]|matches[password]');
@@ -61,7 +61,6 @@ class Auth extends CI_Controller {
                         'first_name' => $_POST['first_name'],
                         'last_name' => $_POST['last_name'],
                         'email' => $_POST['email'],
-                        'user_name' => $_POST['user_name'],
                         'password' => md5($_POST['password']),
                         'created_at' => date('Y-m-d')
                     );
@@ -70,7 +69,8 @@ class Auth extends CI_Controller {
                     redirect("Auth/register", "refresh");
                 }
             }
-            $this->load->view('register');
+            $data['menu'] = $this->load->view('register', NULL, TRUE);
+            $this->load->view('index',$data);
         }
     }
 }

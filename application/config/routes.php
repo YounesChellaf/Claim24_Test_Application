@@ -50,11 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+if (isset($_SESSION['logged_user'])){
+}
+else{
+
+}
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //My custom routes
     $route['login'] = 'Auth/login';
+    $route['weather'] = 'Weather/search';
     $route['register'] = 'Auth/register';
 

@@ -27,7 +27,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $data['menu'] = $this->load->view('main', NULL, TRUE);
+		$this->load->view('index',$data);
 	}
 
     function fetch()
