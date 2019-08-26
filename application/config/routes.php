@@ -61,6 +61,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 //My custom routes
     $route['login'] = 'Auth/login';
-    $route['weather'] = 'Weather/search';
-    $route['register'] = 'Auth/register';
+$route['weather'] = 'Weather/search';
+$route['register'] = 'Auth/register';
 
