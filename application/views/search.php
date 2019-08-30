@@ -1,7 +1,5 @@
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex  flex-column">
+ <div style="margin-top: 10%">
         <?php
-           echo $metar_data;
+        echo $metar_data;
         ?>
-    </div>
-</header>
+ </div>

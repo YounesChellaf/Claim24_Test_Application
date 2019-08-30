@@ -382,7 +382,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             source:sample_data,
             limit:10,
             templates:{
-                suggestion:Handlebars.compile('<div class="row"><div class="col-md-12" style="color:#000000; padding-right:5px; padding-left:5px;">( {{iata_code}} ) :{{name}} , {{municipality}}</div></div>')
+                suggestion:Handlebars.compile('<div class="row"><div class="col-md-12" style="color:#000000; padding-right:5px; padding-left:5px;"><strong>{{iata_code}} </strong> {{name}} , {{municipality}}</div></div>')
             }
         });
     });
