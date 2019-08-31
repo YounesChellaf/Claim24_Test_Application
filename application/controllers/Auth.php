@@ -44,7 +44,6 @@ class Auth extends CI_Controller {
     }
 
 
-
     public function register(){
         if (isset($_SESSION['logged_user'])){
             redirect(base_url());
@@ -66,11 +65,26 @@ class Auth extends CI_Controller {
                     );
                     $this->db->insert('users', $data);
                     $this->session->set_flashdata("success", "Your account registered succesfully");
-                    redirect("Auth/register", "refresh");
+                    $_SESSION['logged_user'] = true;
+                    $_SESSION['first_name'] = $_POST['first_name'];
+                    $_SESSION['last_name'] = $_POST['last_name'];
+                    redirect(base_url(), "refresh");
+                    //redirect("Auth/register", "refresh");
                 }
             }
             $data['menu'] = $this->load->view('register', NULL, TRUE);
             $this->load->view('index',$data);
         }
+    }
+    public function logout(){
+        $newdata = array(
+            'first_name'  =>'',
+            'last_name' => '',
+            'logged_user' => FALSE,
+        );
+        $this->session->unset_userdata($newdata);
+        $this->session->sess_destroy();
+        redirect(base_url(), "refresh");
+
     }
 }

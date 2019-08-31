@@ -43,9 +43,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo base_url(); ?>#contact">Contact</a>
                 </li>
                 <?php if (isset($_SESSION['logged_user'])){?>
-                    <li class="nav-item mx-0 mx-lg-1 row" style="padding-left: 10%">
+                    <li class="nav-item dropdown mx-0 mx-lg-1 row" style="padding-left: 10%">
                         <img style="width: 20%; height: 100%"  src="<?php echo base_url(); ?>assets/img/avataaars.svg" alt="">
-                        <span class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" ><?php echo $_SESSION['first_name'];?></span>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 5%">
+                            <?php echo $_SESSION['first_name'];?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo base_url(); ?>logout">Logout</a>
+                        </div>
                     </li>
                     <?php
                 }
@@ -382,12 +388,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             source:sample_data,
             limit:10,
             templates:{
-                suggestion:Handlebars.compile('<div class="row"><div class="col-md-12" style="color:#000000; padding-right:5px; padding-left:5px;"><strong>{{iata_code}} </strong> {{name}} , {{municipality}}</div></div>')
+                suggestion:Handlebars.compile('<div class="row"><div class="col-md-12" style="color:#000000; padding-right:5px; padding-left:5px;"><strong style="margin-right: 2%">{{iata}}  </strong> {{name}} , {{city}}</div></div>')
             }
         });
     });
 
 </script>
+
 </body>
 
 </html>

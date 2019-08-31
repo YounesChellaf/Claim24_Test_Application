@@ -2,6 +2,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -51,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 if (isset($_SESSION['logged_user'])){
+
 }
 else{
 
@@ -60,7 +62,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //My custom routes
-    $route['login'] = 'Auth/login';
+$route['/'] = 'Welcome/index';
+$route['login'] = 'Auth/login';
 $route['weather'] = 'Weather/search';
 $route['register'] = 'Auth/register';
-
+$route['logout'] =  'Auth/logout';
