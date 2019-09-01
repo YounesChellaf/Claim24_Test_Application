@@ -21,7 +21,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="prefetch" class="form-group">
-                                        <input  type="text"  name="airport"  id="aiport-input" class="type" placeholder="Aeroport name *" value="" style="    display: block;
+                                        <input  type="text"  name="airport"  id="aiport-input" class="type" placeholder="Aeroport name *" value=""  required style="    display: block;
     width: 640px;
     height: 60px;
     padding: .500rem .75rem;
@@ -42,10 +42,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input type="date" name="date" class="datepicker form-control" value=""/>
+                                    <input type="date" name="date" class="datepicker form-control" value="" required/>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="time" name="time" class="form-control" placeholder="Confirm Password *" value=""/>
+                                    <input type="time" name="time" class="form-control" placeholder="Confirm Password *" value="" required/>
                                 </div>
                             </div>
 
