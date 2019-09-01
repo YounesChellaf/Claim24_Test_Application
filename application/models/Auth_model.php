@@ -18,7 +18,7 @@ class Auth_model extends CI_Model
     function fetch_data($query)
     {
         $q = metaphone($query);
-        $p = metaphone(`name`);
+        $p = metaphone('name');
         $this->db->like('name',$query);
         $query = $this->db->get('airports');
         //$query = $this->db->get_where("airports", array(metaphone("name") => $q));

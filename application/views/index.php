@@ -67,7 +67,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </nav>
-
 <?=$menu?>
 <!-- Footer -->
 <footer class="footer text-center">

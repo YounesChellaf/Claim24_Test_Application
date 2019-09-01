@@ -36,21 +36,4 @@ class Welcome extends CI_Controller {
         $this->load->model('auth_model');
         echo $this->auth_model->fetch_data($this->uri->segment(3));
     }
-
-    function file(){
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="sample.csv"');
-        $data = array(
-            'aaa,bbb,ccc,dddd',
-            '123,456,789',
-            '"aaa","bbb"'
-        );
-
-        $fp = fopen('php://output', 'wb');
-        foreach ( $data as $line ) {
-            $val = explode(",", $line);
-            fputcsv($fp, $val);
-        }
-        fclose($fp);
-    }
 }
