@@ -23,8 +23,13 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
     }
+
+//*****
+//    display the default view [index]
+//*****
 	public function index()
 	{
+        $data['model'] = $this->load->view('portfolio-model');
         $data['menu'] = $this->load->view('main');
 		$this->load->view('index',$data);
 	}

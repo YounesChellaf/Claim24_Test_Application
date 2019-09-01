@@ -13,7 +13,9 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->helper("url");
     }
-
+//*****
+//    display the login view and validate the log in
+//*****
     public function login(){
         if (isset($_SESSION['logged_user'])){
             redirect(base_url(),'refresh');
@@ -38,11 +40,14 @@ class Auth extends CI_Controller {
                     }
                 }
             }
-            $data['menu'] = $this->load->view('login', NULL, TRUE);
+            $data['menu'] = $this->load->view('login');
             $this->load->view('index',$data);
         }
     }
 
+//*****
+//    display the register view and validate the registration
+//*****
 
     public function register(){
         if (isset($_SESSION['logged_user'])){
@@ -69,13 +74,16 @@ class Auth extends CI_Controller {
                     $_SESSION['first_name'] = $_POST['first_name'];
                     $_SESSION['last_name'] = $_POST['last_name'];
                     redirect(base_url(), "refresh");
-                    //redirect("Auth/register", "refresh");
                 }
             }
-            $data['menu'] = $this->load->view('register', NULL, TRUE);
+            $data['menu'] = $this->load->view('register');
             $this->load->view('index',$data);
         }
     }
+
+//*****
+//    Logout the user
+//*****
     public function logout(){
         $newdata = array(
             'first_name'  =>'',

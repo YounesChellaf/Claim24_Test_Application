@@ -15,6 +15,11 @@ class Autocomplete_model extends CI_Model
     /**
      * @param $query
      */
+
+//*****
+//    Fetch data and make comparaison with data introduced at the airport input to make the fuzzy search
+//    and show the autocomplete suggestion
+//*****
     function fetch_data($query)
     {
         $q = metaphone($query);

@@ -6,6 +6,9 @@ class Autocomplete extends CI_Controller {
         $this->load->helper('url');
     }
 
+//*****
+//    call to the fetch_data() function from  autocomplete model to get data from airports table 
+//*****
     function fetch()
     {
         $this->load->model('autocomplete_model');

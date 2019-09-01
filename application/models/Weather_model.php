@@ -12,6 +12,10 @@ class Weather_model extends CI_Model
         parent::__construct();
     }
 
+//*****
+//   This function for converting the data gotten from Iowa website
+//    to display it as an array format to the view
+//*****
     public function ConvertMetar($data,$time,$station){
         $result =array();
         $j=1;
@@ -19,7 +23,8 @@ class Weather_model extends CI_Model
             if (substr($data[$i],11,2) == substr($time,0,2) ) {
                 $result[$j][0] = $station;
                 $result[$j][1] = $data[$i];
-                $result[$j][2] = $data[$i+1];
+                $metar = str_replace($station, '', $data[$i+1]);
+                $result[$j][2] = $station." ".$metar;
             }
             $j++;
         }
