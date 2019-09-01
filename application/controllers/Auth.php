@@ -52,7 +52,7 @@ class Auth extends CI_Controller {
             if (isset($_POST['register'])) {
                 $this->form_validation->set_rules('first_name', 'First Name ', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name ', 'required');
-                $this->form_validation->set_rules('email', 'Email', 'required');
+                $this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
                 $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
                 $this->form_validation->set_rules('confirm_password', 'Confirmed Password', 'required|min_length[6]|matches[password]');
                 if ($this->form_validation->run() == true) {

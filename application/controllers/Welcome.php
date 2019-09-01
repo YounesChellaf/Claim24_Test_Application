@@ -23,17 +23,9 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
     }
-
-
 	public function index()
 	{
         $data['menu'] = $this->load->view('main',NULL, TRUE);
 		$this->load->view('index',$data);
 	}
-
-    function fetch()
-    {
-        $this->load->model('auth_model');
-        echo $this->auth_model->fetch_data($this->uri->segment(3));
-    }
 }
